@@ -1,7 +1,10 @@
 package com.jad;
 
 public class Corge {
+    private Foo foo = new Foo(new Bar());
+
     public Corge(final Foo foo) {
+        this.foo = foo;
     }
 
     public Foo getFoo() {
