@@ -1,48 +1,48 @@
 package com.jad;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Foo {
-    private Bar bar = new Bar();
-    private ArrayList<Baz> bazs = new ArrayList<Baz>();
-    private Qux qux = new Qux();
+    private final Bar bar;
+    private final ArrayList<Baz> bazs = new ArrayList<Baz>();
+    private final Qux qux = new Qux();
+    private final ArrayList<Grault> graults = new ArrayList<Grault>();
     private Corge corge = new Corge(new Foo(new Bar()));
-    private ArrayList<Grault> graults = new ArrayList<Grault>();
 
     public Foo(final Bar bar) {
         this.bar = bar;
     }
 
-    public Bar getBar() {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public List<Baz> getBazs() {
-        throw new UnsupportedOperationException("Not implemented yet");
+    public ArrayList<Grault> getGraults() {
+        return graults;
     }
 
     public Qux getQux() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return qux;
     }
 
-    public Corge getCorge() {
-        throw new UnsupportedOperationException("Not implemented yet");
+    public ArrayList<Baz> getBazs() {
+        return bazs;
     }
 
-    public void setCorge(final Corge firstCorge) {
-        throw new UnsupportedOperationException("Not implemented yet");
+    public Bar getBar() {
+        return bar;
     }
 
-    public List<Grault> getGraults() {
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
 
     public void addBaz(final Baz baz) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        bazs.add(baz);
     }
 
-    public void addGrault() {
-        throw new UnsupportedOperationException("Not implemented yet");
+    /* public void addGrault(final Grault grault) {
+        graults.add(grault);
+    }*/
+
+    public Corge getCorge() {
+        return corge;
+    }
+
+    public void setCorge(Corge corge) {
+        this.corge = corge;
     }
 }
