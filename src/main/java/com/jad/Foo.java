@@ -3,13 +3,13 @@ package com.jad;
 import java.util.ArrayList;
 
 public class Foo {
-    private final Bar bar;
     private final ArrayList<Baz> bazs = new ArrayList<Baz>();
     private final Qux qux = new Qux();
-    private final ArrayList<Grault> graults = new ArrayList<Grault>();
-    private Corge corge = new Corge(new Foo(new Bar()));
+    private ArrayList<Grault> graults = new ArrayList<Grault>();
+    private Bar bar;
+    private Corge corge;
 
-    public Foo(final Bar bar) {
+    public Foo(Bar bar) {
         this.bar = bar;
     }
 
@@ -34,15 +34,29 @@ public class Foo {
         bazs.add(baz);
     }
 
-    /* public void addGrault(final Grault grault) {
-        graults.add(grault);
-    }*/
+    public void addGrault() {
+        graults.add(new Grault(this));
+    }
 
     public Corge getCorge() {
         return corge;
     }
 
-    public void setCorge(Corge corge) {
+    public void setCorge(final Corge firstCorge) {
         this.corge = corge;
+        if (this.corge == firstCorge) {
+            return;
+        }
+
+        if (this.corge != null) {
+            Corge oldCorge = this.corge;
+            this.corge = null;
+            oldCorge.setFoo(null);
+        }
+
+        this.corge = firstCorge;
+        if (firstCorge != null && firstCorge.getFoo() != this) {
+            firstCorge.setFoo(this);
+        }
     }
 }
